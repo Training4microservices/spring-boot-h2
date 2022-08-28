@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -26,7 +27,7 @@ public class EmployeeController {
   }
 
   @PostMapping("/employees")
-  private ResponseEntity createEmployee(@RequestBody Employee employee) {
+  private ResponseEntity createEmployee(@Valid @RequestBody Employee employee) {
     try{
       employeeService.saveOrUpdate(employee);
     } catch (Exception exception) {
